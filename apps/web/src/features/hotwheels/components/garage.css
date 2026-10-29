@@ -1,0 +1,161 @@
+/* ──────────────────────────────────────────────
+   Garage rack — wall cabinet with pegboard, LED strips and shelves.
+   Always dark (it's a lit display cabinet) regardless of app theme.
+   ────────────────────────────────────────────── */
+
+.rack {
+  --rack-gap: 28px;
+  position: relative;
+}
+@media (max-width: 519px) {
+  .rack { --rack-gap: 16px; }
+}
+
+.rack-cabinet {
+  position: relative;
+  padding: 18px 16px 8px;
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 5%, transparent 95%, rgba(0, 0, 0, 0.55)),
+    radial-gradient(rgba(255, 255, 255, 0.07) 1.4px, transparent 1.6px) 0 0 / 18px 18px,
+    linear-gradient(180deg, #17171f, #0c0c12);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 0 0 6px #08080c,
+    inset 0 0 0 7px rgba(255, 255, 255, 0.05),
+    inset 0 30px 60px -30px rgba(0, 0, 0, 0.9),
+    0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.rack-row {
+  position: relative;
+  padding-top: 22px;
+  margin-bottom: 26px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 340px;
+  animation: rack-row-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--row-i, 0) * 70ms);
+}
+
+@keyframes rack-row-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Warm LED strip that lights each shelf from above */
+.rack-led {
+  position: absolute;
+  top: 0;
+  left: 4%;
+  right: 4%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, #ffd8a8 15%, #fff1dc 50%, #ffd8a8 85%, transparent);
+  box-shadow: 0 0 12px 2px rgba(255, 196, 120, 0.35);
+}
+.rack-led::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2px;
+  height: 220px;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(255, 210, 150, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.rack-slots {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--rack-cols, 4), minmax(0, 1fr));
+  gap: var(--rack-gap);
+  padding: 0 4px;
+  margin: 0;
+  list-style: none;
+  align-items: end;
+}
+
+.rack-slot {
+  position: relative;
+  padding-top: 10px;
+  max-width: 190px;
+  width: 100%;
+  justify-self: center;
+}
+
+/* Peg the card hangs from */
+.rack-peg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 26%;
+  height: 18px;
+  translate: -50% 0;
+  border-radius: 3px 3px 6px 6px;
+  background: linear-gradient(180deg, #9ca3af, #4b5563);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.rack-shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.6), transparent);
+  filter: blur(2px);
+  z-index: -1;
+}
+
+/* Shelf lip with front edge highlight */
+.rack-shelf {
+  position: relative;
+  height: 16px;
+  margin: 16px -12px 0;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #3b3b48 0%, #23232c 45%, #121218 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 10px 18px -6px rgba(0, 0, 0, 0.8);
+}
+.rack-shelf::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 10px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.45));
+  transform: perspective(200px) rotateX(40deg);
+  transform-origin: bottom;
+}
+
+.rack-slot.is-new .bc-card {
+  animation: rack-new 1.6s ease-out 1;
+}
+@keyframes rack-new {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+  30% { box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.9), 0 0 40px rgba(250, 204, 21, 0.5); }
+}
+
+.rack-skeleton {
+  aspect-ratio: 9 / 14;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #1c1c26 30%, #2a2a36 50%, #1c1c26 70%);
+  background-size: 200% 100%;
+  animation: rack-shimmer 1.4s linear infinite;
+}
+@keyframes rack-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rack-row,
+  .rack-slot.is-new .bc-card,
+  .rack-skeleton {
+    animation: none;
+  }
+}

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Turbo
+.turbo/
+
+# Uploads (local dev)
+uploads/
+
+# Coverage
+coverage/
+
+# Local Claude/editor tooling
+.claude/
+
+# Licensed 3D model: Sketchfab Standard licence doesn't allow redistributing the file.
+# Download it yourself (see README) — the app falls back to a CSS package without it.
+apps/web/public/models/*.glb

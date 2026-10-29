@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: collectorhub-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: collectorhub
+      MONGO_INITDB_ROOT_PASSWORD: collectorhub_dev
+      MONGO_INITDB_DATABASE: collectorhub
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - collectorhub
+
+  mongo-express:
+    image: mongo-express:1
+    container_name: collectorhub-mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: collectorhub
+      ME_CONFIG_MONGODB_ADMINPASSWORD: collectorhub_dev
+      ME_CONFIG_MONGODB_URL: mongodb://collectorhub:collectorhub_dev@mongodb:27017/
+      ME_CONFIG_BASICAUTH: "false"
+    depends_on:
+      - mongodb
+    networks:
+      - collectorhub
+
+volumes:
+  mongodb_data:
+  mongodb_config:
+
+networks:
+  collectorhub:
+    driver: bridge

@@ -1,0 +1,27 @@
+{
+  "name": "collectorhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The ultimate collector platform",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rm -rf node_modules",
+    "dev:web": "turbo dev --filter=@collectorhub/web",
+    "dev:backend": "turbo dev --filter=@collectorhub/backend",
+    "dev:all": "turbo dev --filter=@collectorhub/web --filter=@collectorhub/backend"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.3",
+    "prettier": "^3.5.3",
+    "@types/node": "^22.15.0"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  }
+}

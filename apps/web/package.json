@@ -1,0 +1,48 @@
+{
+  "name": "@collectorhub/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "catalog:import": "node scripts/import-hw-catalog.mjs"
+  },
+  "dependencies": {
+    "@collectorhub/shared-types": "workspace:*",
+    "@collectorhub/utilities": "workspace:*",
+    "@supabase/supabase-js": "^2.112.3",
+    "@tanstack/react-query": "^5.80.7",
+    "@types/three": "^0.186.0",
+    "@zxing/browser": "0.1.5",
+    "@zxing/library": "0.21.3",
+    "axios": "^1.9.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.12.2",
+    "lucide-react": "^0.513.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hot-toast": "^2.5.2",
+    "react-router": "^7.6.3",
+    "recharts": "^2.15.3",
+    "tesseract.js": "5.1.1",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "3.1.4"
+  }
+}
