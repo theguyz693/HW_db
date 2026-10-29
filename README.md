@@ -19,13 +19,13 @@ SQL editor, and add `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` to `apps/web/
 Other scripts: `pnpm --filter @collectorhub/web test`, `… build`,
 `… catalog:import 2018 2026` (refreshes `public/catalog/hotwheels.json`).
 
-## 3D package model (not included)
+## 3D package model
 
-The showcase uses "HOT WHEELS PACKAGE SMALL" by manish.konda99 (Sketchfab Standard licence),
-which can't be redistributed. Download it from
+`apps/web/public/models/hw-package.glb` is "HOT WHEELS PACKAGE SMALL" by
+[manish.konda99](https://sketchfab.com/manish.konda99), from
 https://sketchfab.com/3d-models/hot-wheels-package-small-2e19755b3026427ebc4f5bb1c0f92054
-and save it as `apps/web/public/models/hw-package.glb`. Without it, the showcase falls back
-to the 2.5D CSS package.
+(Sketchfab Standard licence). All rights remain with the author; it is included here only so the
+showcase works out of the box. If it's missing, the showcase falls back to the 2.5D CSS package.
 
 ## Credits
 

@@ -38,7 +38,3 @@ coverage/
 
 # Local Claude/editor tooling
 .claude/
-
-# Licensed 3D model: Sketchfab Standard licence doesn't allow redistributing the file.
-# Download it yourself (see README) — the app falls back to a CSS package without it.
-apps/web/public/models/*.glb
